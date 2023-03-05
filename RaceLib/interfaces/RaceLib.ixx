@@ -192,9 +192,7 @@ namespace jinx
 
     class VehicleAir : public Vehicle // -----------------------------------------------------------------------------------------------
     {
-    public:   
-
-        void calculate_time_result(int _distance) override = 0;
+    public:          
 
         // Constructor removal
         VehicleAir() = delete;
@@ -267,7 +265,7 @@ namespace jinx
         GV_Humpback(std::string _vehiclePilot)
             : VehicleGround(_vehiclePilot)
         {
-            std::string _vehicleName = "Верблюд";
+            std::string _vehicleName = "Верблюд\t";
             set_vehicle_name(_vehicleName);
             set_vehicle_speed(SPEED_HUMPBACK);
         }
@@ -374,7 +372,7 @@ namespace jinx
         GV_Centaur(std::string _vehiclePilot)
             : VehicleGround(_vehiclePilot)
         {
-            std::string _vehicleName = "Кентавр";
+            std::string _vehicleName = "Кентавр\t";
             set_vehicle_name(_vehicleName);
             set_vehicle_speed(SPEED_CENTAUR);
         }
@@ -483,7 +481,7 @@ namespace jinx
         AV_Eagle(std::string _vehiclePilot)
             : VehicleAir(_vehiclePilot)
         {
-            std::string _vehicleName = "Орёл";
+            std::string _vehicleName = "Орёл\t";
             set_vehicle_name(_vehicleName);
             set_vehicle_speed(SPEED_EAGLE);
         }
@@ -505,7 +503,7 @@ namespace jinx
         AV_Broom(std::string _vehiclePilot)
             : VehicleAir(_vehiclePilot)
         {
-            std::string _vehicleName = "Метла";
+            std::string _vehicleName = "Метла\t";
             set_vehicle_name(_vehicleName);
             set_vehicle_speed(SPEED_BROOM);
         }

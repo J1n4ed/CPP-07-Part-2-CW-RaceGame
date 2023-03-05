@@ -53,7 +53,7 @@ namespace jinx
 	/*
 	Сортировка результатов гонки
 	*/
-	void sort_result_roster(std::vector<jinx::Vehicle*> raceRoster);
+	void sort_result_roster(std::vector<jinx::Vehicle*> & raceRoster);
 
 	// Настройка ботов
 
