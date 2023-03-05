@@ -12,89 +12,120 @@
 #define RETURN_FAILURE 1
 #define _UNICODE
 
-#ifdef _WIN32
+#ifdef _WIN32			// windows
 #include <windows.h>
 #include <string>
-#endif // windows
-
-#ifdef linux
+#include <cstdlib>
+#else					// POSIX
 #include <stdlib.h>
 #include <string.h>
-#endif // linux
+#endif 
 
 // -----------
 
 #include <iostream>
 #include "utility.h"
+#include <vector>
+#include <time.h>
 
 // imports
 
 import jinx_racegame;
-import jinx_exceptions;
 
 int main(int argc, char ** argv)
 {
-#ifdef _WIN32
 
-	 SetConsoleCP(1251);
-	 SetConsoleOutputCP(1251);
-
-#define _WIN32_
-
-#endif // _WIN32
-
-#ifdef _WIN64
-#undef _WIN32_
-#define _AMD64_
-#endif
-
-#ifdef linux
-
-#define _AMD64_
+#ifdef _WIN32					// Windows
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+#else							// POSIX
 	setlocale(LC_ALL, "Russian");
-
-#endif // linux
+#endif
 	
-	std::string userName;
+	// ПЕРЕМЕННЫЕ --------------------------------------------
 
-	std::cout << "Введите имя игрока (Максимум 10 символов)\n> ";
+	std::string userName;					// ммя игрока
+	bool flagExit = false;					// флаг выхода
+	short playerMenuInput = -1;				// ввод игрока в меню игры	
+	short raceType = -1;					// Тип выбранной гонки
+	bool repeatKey = false;					// ключ отрисовки меню
 
-	do
+	// -------------------------------------------------------
+
+	// SETUP
+
+	jinx::clear_screen();
+
+	std::cout << "---------------------------------------------------------------\n";
+	std::cout << "                  >>> ИГРА СИМУЛЯТОР ГОНОК! <<<\n";	
+	std::cout << "---------------------------------------------------------------\n\n";
+
+	std::cout << "Введите имя игрока\n> ";
+
+	getline(std::cin, userName);	
+
+
+	// ------------------------------------------------------
+	// ------- MAIN GAMEPLAY LOOP ---------------------------
+
+	do // while (!flagExit);
 	{
-		getline(std::cin, userName);
-	} while (userName.length() > 10);
+		jinx::clear_screen();
+		playerMenuInput = -1;		// drop to default
+		raceType = -1;				// drop to default
 
-	std::cout << "\nSTRLEN = " << userName.length();
-	std::cout << "\nContent: \n";
+		// плашка меню
+		jinx::print_menu_header(userName);
 
-	for (int i = 0; i < userName.length(); ++i)
-	{
-		std::cout << "[" << i << "]"; 
-		std::cout << userName[i];
-	}
+		// крутилка главного меню
 
-	std::cout << "\nИмя игрока: ";
-	std::cout << userName;
+		jinx::draw_menu_selector(repeatKey, &playerMenuInput, userName);		
 
-	jinx::GV_Humpback humpback(userName);
+		switch (playerMenuInput)
+		{
+		case 0:
+		{
+			flagExit = true;
+			break;
+		}
+		case 1:
+		{
+			// - GAME ENTREE -
+			jinx::start_game(userName);
 
-	jinx::GV_Humpback* gv_humpback_ptr;
-	jinx::Vehicle* vehicle_ptr;
+			if (!repeatKey) repeatKey = true;
+			break;
+		}
+		default:
+		{
+			std::cout << "Выбор не распознан... попробуйте снова\n";
+			std::cin.get();
+			break;
+		}
+		}
+		// END OF ввод игрока в меню
 
-	std::cout << '\n';
+		std::cout << std::endl << std::endl;
 
-	vehicle_ptr = &humpback;
-	vehicle_ptr = vehicle_ptr;
+	} while (!flagExit);
 
-	jinx::print_vehicle(humpback);
+	// ------ END GAME PLAY LOOP ----------------------------
 
-	std::cout << '\n';
+	std::cin.clear();
+	std::cout << "\n\t\t-- ИГРА ОКОНЧЕНА --\n";
 
 	// clear and exit
 
 	// ------------------
+
 	std::cout << std::endl;
-	std::cout << "Нажмите любую кнопку для завершения...\n";
-	std::getchar();
+
+#ifdef _WIN32			// windows
+	system("pause");
+#else					// POSIX
+	std::cout << "Введите любую кнопку для завершения...\n";
+	std::cin.get();
+#endif 
+	
 	return EXIT_SUCCESS;
 }
