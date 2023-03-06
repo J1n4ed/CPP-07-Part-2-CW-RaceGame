@@ -38,10 +38,10 @@ void jinx::clear_screen()
 */
 void jinx::print_menu_header(std::string userName)
 {
-    std::cout << "---------------------------------------------------------------\n";
-    std::cout << "\t\t>>> ИГРА СИМУЛЯТОР ГОНОК! <<<\n";
-    std::cout << "\t\tИгрок: " << userName << "\n";
-    std::cout << "---------------------------------------------------------------\n\n";
+    std::cout << "------------------------------------------------------------------------\n";
+    std::cout << "\t\t\t>>> ИГРА СИМУЛЯТОР ГОНОК! <<<\n";
+    std::cout << "\t\t\tИгрок: " << userName << "\n";
+    std::cout << "------------------------------------------------------------------------\n\n";
 }
 
 /*
@@ -51,15 +51,15 @@ void jinx::draw_menu_selector(bool repeatKey, short * playerMenuInput, std::stri
 {
 	if (!repeatKey)
 	{
-		std::cout << "Меню (выберите действие):	\n" <<
-					"1. Начать игру\n" <<
-					"0. Выход\n";
+		std::cout << " Меню (выберите действие):	\n" <<
+					" 1. Начать игру\n" <<
+					" 0. Выход\n";
 	}
 	else
 	{
-		std::cout << "Меню (выберите действие):	\n" <<
-			"1. Повторить игру?\n" <<
-			"0. Выход\n";
+		std::cout << " Меню (выберите действие):	\n" <<
+			" 1. Повторить игру?\n" <<
+			" 0. Выход\n";
 	}
 	// Ввод игрока в меню
 
@@ -85,7 +85,7 @@ void jinx::print_race_roster(std::vector<jinx::Vehicle*> raceRoster)
 	
 	for (int i = 0; i < size; ++i)
 	{
-		std::cout << "Пилот: " << raceRoster[i]->get_pilot_name() << "\tТС: " << raceRoster[i]->get_vehicle_name() << "\tСкорость: " << raceRoster[i]->get_vehicle_speed();
+		std::cout << " Пилот: " << raceRoster[i]->get_pilot_name() << "\tТС: " << raceRoster[i]->get_vehicle_name() << "\tСкорость: " << raceRoster[i]->get_vehicle_speed();
 		std::cout << '\n';
 	} // END OF for (int i = 0; i < size; ++i)
 } // END OF print_race_roster(std::vector<jinx::Vehicle*>* raceRoster)
@@ -99,7 +99,7 @@ void jinx::print_race_results(std::vector<jinx::Vehicle*> raceRoster)
 	
 	for (int i = 0; i < size; ++i)
 	{
-		std::cout << "Позиция: " << i + 1 << "\tПилот: " << raceRoster[i]->get_pilot_name() << "\tТС: " << raceRoster[i]->get_vehicle_name() << "\t Результат заезда: " << raceRoster[i]->get_race_result();
+		std::cout << " Позиция: " << i + 1 << "\tПилот: " << raceRoster[i]->get_pilot_name() << "\tТС: " << raceRoster[i]->get_vehicle_name() << "\t Результат заезда: " << raceRoster[i]->get_race_result();
 		std::cout << '\n';
 	} // END OF for (int i = 0; i < size; ++i)
 } // END OF print_race_results(std::vector<jinx::Vehicle*> * raceRoster)
@@ -283,11 +283,11 @@ void jinx::run_ground_race(std::string userName)
 
 	jinx::print_menu_header(userName);
 	
-	std::cout << "Выберите ТС для игрока: \n"
-		<< "1. Верблюд\n"
-		<< "2. Верблюд-быстроход\n"
-		<< "3. Кентавр\n"
-		<< "4. Ботинки-вездеходы\n";
+	std::cout << " Выберите ТС для игрока: \n"
+		<< " 1. Верблюд\n"
+		<< " 2. Верблюд-быстроход\n"
+		<< " 3. Кентавр\n"
+		<< " 4. Ботинки-вездеходы\n";
 
 	do // while (localPlayerInput == -1);
 	{
@@ -327,7 +327,7 @@ void jinx::run_ground_race(std::string userName)
 	raceList.push_back(vehicle_ptr);
 	vehicle_ptr = nullptr;
 
-	std::cout << "Введите количество других участников: ";
+	std::cout << " Введите количество других участников: ";
 	std::cin >> botNumber;
 
 	jinx::get_bots(&botList, botNumber);
@@ -484,7 +484,7 @@ void jinx::run_ground_race(std::string userName)
 
 	// -------------------------------
 
-	std::cout << "\nСПИСОК УЧАСТНИКОВ:\n\n";
+	std::cout << "\n СПИСОК УЧАСТНИКОВ:\n\n";
 
 	if (raceList.size() != 0)
 	{
@@ -492,13 +492,13 @@ void jinx::run_ground_race(std::string userName)
 	}
 	else
 	{
-		std::cout << "-- ПУСТО --";
+		std::cout << " -- ПУСТО --";
 	}
 
 #ifdef _WIN32			// windows
 	system("pause");
 #else					// POSIX
-	std::cout << "Введите любую кнопку для продолжения...\n";
+	std::cout << " Введите любую кнопку для продолжения...\n";
 	std::cin.get();
 #endif 
 
@@ -511,7 +511,7 @@ void jinx::run_ground_race(std::string userName)
 
 	// ПРОЦЕСС ФОРМИРОВАНИЯ ГОНКИ -------------------------------
 
-	std::cout << "Введите дистанцию гонки: \n";
+	std::cout << " Введите дистанцию гонки: \n";
 	std::cout << userName << "> ";
 	std::cin >> raceDistance;
 
@@ -522,11 +522,11 @@ void jinx::run_ground_race(std::string userName)
 
 	// -------------------------------
 
-	std::cout << "Параметры гонки \n\n";
-	std::cout << "Тип гонки: наземная гонка\n";
-	std::cout << "Дистанция гонки: " << raceDistance << '\n';
-	std::cout << "Количество участников: " << raceList.size() << '\n';
-	std::cout << "Ростер участников старта: \n\n";
+	std::cout << " - Параметры гонки \n\n";
+	std::cout << " - Тип гонки: наземная гонка\n";
+	std::cout << " - Дистанция гонки: " << raceDistance << '\n';
+	std::cout << " - Количество участников: " << raceList.size() << '\n';
+	std::cout << " - Ростер участников старта: \n\n";
 
 	if (raceList.size() != 0)
 	{
@@ -540,7 +540,7 @@ void jinx::run_ground_race(std::string userName)
 #ifdef _WIN32			// windows
 	system("pause");
 #else					// POSIX
-	std::cout << "Введите любую кнопку для продолжения...\n";
+	std::cout << " Введите любую кнопку для продолжения...\n";
 	std::cin.get();
 #endif 
 
@@ -566,11 +566,11 @@ void jinx::run_ground_race(std::string userName)
 
 	// -------------------------------
 
-	std::cout << "Параметры гонки \n\n";
-	std::cout << "Тип гонки: наземная гонка\n";
-	std::cout << "Дистанция гонки: " << raceDistance << '\n';
-	std::cout << "Количество участников: " << raceList.size() << '\n';
-	std::cout << "Результаты участников старта: \n\n";
+	std::cout << " - Параметры гонки \n\n";
+	std::cout << " - Тип гонки: наземная гонка\n";
+	std::cout << " - Дистанция гонки: " << raceDistance << '\n';
+	std::cout << " - Количество участников: " << raceList.size() << '\n';
+	std::cout << " - Результаты участников старта: \n\n";
 
 	if (raceList.size() != 0)
 	{
@@ -586,7 +586,7 @@ void jinx::run_ground_race(std::string userName)
 #ifdef _WIN32			// windows
 	system("pause");
 #else					// POSIX
-	std::cout << "Введите любую кнопку для продолжения...\n";
+	std::cout << " Введите любую кнопку для продолжения...\n";
 	std::cin.get();
 #endif 
 }
@@ -638,10 +638,10 @@ void jinx::run_air_race(std::string userName)
 
 	jinx::print_menu_header(userName);
 
-	std::cout << "Выберите ТС для игрока: \n"
-		<< "1. Ковёр-самолёт\n"
-		<< "2. Орёл\n"
-		<< "3. Метла\n";
+	std::cout << " Выберите ТС для игрока: \n"
+		<< " 1. Ковёр-самолёт\n"
+		<< " 2. Орёл\n"
+		<< " 3. Метла\n";
 
 	do // while (localPlayerInput == -1);
 	{
@@ -676,7 +676,7 @@ void jinx::run_air_race(std::string userName)
 	raceList.push_back(vehicle_ptr);
 	vehicle_ptr = nullptr;
 
-	std::cout << "Введите количество других участников: ";
+	std::cout << " Введите количество других участников: ";
 	std::cin >> botNumber;
 
 	jinx::get_bots(&botList, botNumber);
@@ -807,7 +807,7 @@ void jinx::run_air_race(std::string userName)
 
 	// -------------------------------
 
-	std::cout << "\nСПИСОК УЧАСТНИКОВ:\n\n";
+	std::cout << "\n СПИСОК УЧАСТНИКОВ:\n\n";
 
 	if (raceList.size() != 0)
 	{
@@ -821,7 +821,7 @@ void jinx::run_air_race(std::string userName)
 #ifdef _WIN32			// windows
 	system("pause");
 #else					// POSIX
-	std::cout << "Введите любую кнопку для продолжения...\n";
+	std::cout << " Введите любую кнопку для продолжения...\n";
 	std::cin.get();
 #endif 
 
@@ -834,7 +834,7 @@ void jinx::run_air_race(std::string userName)
 
 	// ПРОЦЕСС ФОРМИРОВАНИЯ ГОНКИ -------------------------------
 
-	std::cout << "Введите дистанцию гонки: \n";
+	std::cout << " Введите дистанцию гонки: \n";
 	std::cout << userName << "> ";
 	std::cin >> raceDistance;
 
@@ -845,11 +845,11 @@ void jinx::run_air_race(std::string userName)
 
 	// -------------------------------
 
-	std::cout << "Параметры гонки \n\n";
-	std::cout << "Тип гонки: воздушная гонка\n";
-	std::cout << "Дистанция гонки: " << raceDistance << '\n';
-	std::cout << "Количество участников: " << raceList.size() << '\n';
-	std::cout << "Ростер участников старта: \n\n";
+	std::cout << " - Параметры гонки \n\n";
+	std::cout << " - Тип гонки: воздушная гонка\n";
+	std::cout << " - Дистанция гонки: " << raceDistance << '\n';
+	std::cout << " - Количество участников: " << raceList.size() << '\n';
+	std::cout << " - Ростер участников старта: \n\n";
 
 	if (raceList.size() != 0)
 	{
@@ -863,7 +863,7 @@ void jinx::run_air_race(std::string userName)
 #ifdef _WIN32			// windows
 	system("pause");
 #else					// POSIX
-	std::cout << "Введите любую кнопку для продолжения...\n";
+	std::cout << " Введите любую кнопку для продолжения...\n";
 	std::cin.get();
 #endif 
 
@@ -889,11 +889,11 @@ void jinx::run_air_race(std::string userName)
 
 	// -------------------------------
 
-	std::cout << "Параметры гонки \n\n";
-	std::cout << "Тип гонки: воздушная гонка\n";
-	std::cout << "Дистанция гонки: " << raceDistance << '\n';
-	std::cout << "Количество участников: " << raceList.size() << '\n';
-	std::cout << "Результаты участников старта: \n\n";
+	std::cout << " - Параметры гонки \n\n";
+	std::cout << " - Тип гонки: воздушная гонка\n";
+	std::cout << " - Дистанция гонки: " << raceDistance << '\n';
+	std::cout << " - Количество участников: " << raceList.size() << '\n';
+	std::cout << " - Результаты участников старта: \n\n";
 
 	if (raceList.size() != 0)
 	{
@@ -909,7 +909,7 @@ void jinx::run_air_race(std::string userName)
 #ifdef _WIN32			// windows
 	system("pause");
 #else					// POSIX
-	std::cout << "Введите любую кнопку для продолжения...\n";
+	std::cout << " Введите любую кнопку для продолжения...\n";
 	std::cin.get();
 #endif 
 }
@@ -918,10 +918,368 @@ void jinx::run_air_race(std::string userName)
 // -------------------------------------------------------
 // СМЕШАННАЯ ГОНКА
 
+
 void jinx::run_mixed_race(std::string userName)
 {
-	// TODO
+	// VARIABLES
+
+	short localPlayerInput = -1;
+	jinx::Vehicle* vehicle_ptr;
+	std::vector<std::string> botList;
+	int botNumber = 0;
+	int seed = 0;
+	std::vector<jinx::Vehicle*> raceList;	// список участников гонки
+	int raceDistance = 0;
+
+	std::vector < jinx::GV_Humpback> bot_humpback_list;
+	std::vector < jinx::GV_Humpback_Fast> bot_humpback_fast_list;
+	std::vector < jinx::GV_Centaur> bot_centaur_list;
+	std::vector < jinx::GV_AllTBoots> bot_boots_list;
+
+	std::vector < jinx::AV_Magic_Carpet> bot_carpet_list;
+	std::vector < jinx::AV_Eagle> bot_eagle_list;
+	std::vector < jinx::AV_Broom> bot_broom_list;
+
+	jinx::GV_Humpback temp_vehicle_1(userName);
+	jinx::GV_Humpback_Fast temp_vehicle_2(userName);
+	jinx::GV_Centaur temp_vehicle_3(userName);
+	jinx::GV_AllTBoots temp_vehicle_4(userName);	
+
+	jinx::AV_Magic_Carpet temp_vehicle_5(userName);
+	jinx::AV_Eagle temp_vehicle_6(userName);
+	jinx::AV_Broom temp_vehicle_7(userName);
+
+	// -----------------------------
+
+	// RNG GENERATION
+
+	// Random seed
+	std::random_device rd;
+
+	// Initialize Mersenne Twister pseudo-random number generator
+	std::mt19937 gen(rd());
+
+	// Generate pseudo-random numbers
+	// uniformly distributed in range (1, 100)
+	// std::uniform_int_distribution<> dis(1, 100);
+	// int ... = dis(gen);
+
+	// --------------
+
+	// -----------------------------
+
+	jinx::clear_screen();
+
+	jinx::print_menu_header(userName);
+
+	std::cout << " Выберите ТС для игрока: \n"
+		<< " 1. Верблюд\n"
+		<< " 2. Верблюд-быстроход\n"
+		<< " 3. Кентавр\n"
+		<< " 4. Ботинки-вездеходы\n"
+		<< " 5. Ковёр-самолёт\n"
+		<< " 6. Орёл\n"
+		<< " 7. Метла\n";
+
+	do // while (localPlayerInput == -1);
+	{
+		std::cout << "\n" << userName << "> ";
+		std::cin >> localPlayerInput;
+
+	} while (localPlayerInput == -1);
+
+	switch (localPlayerInput)
+	{
+	case 1:
+	{
+		vehicle_ptr = &temp_vehicle_1;
+		break;
+	} // end case 1
+	case 2:
+	{
+		vehicle_ptr = &temp_vehicle_2;
+		break;
+	} // end case 2
+	case 3:
+	{
+		vehicle_ptr = &temp_vehicle_3;
+		break;
+	} // end case 3
+	case 4:
+	{
+		vehicle_ptr = &temp_vehicle_4;
+		break;
+	} // end case 4	
+	case 5:
+	{
+		vehicle_ptr = &temp_vehicle_5;
+		break;
+	} // end case 4	
+	case 6:
+	{
+		vehicle_ptr = &temp_vehicle_6;
+		break;
+	} // end case 4	
+	case 7:
+	{
+		vehicle_ptr = &temp_vehicle_7;
+		break;
+	} // end case 4	
+	default:
+	{
+		break;
+	} // end default
+	} // end switch (localPlayerInput)
+
+	raceList.push_back(vehicle_ptr);
+	vehicle_ptr = nullptr;
+
+	std::cout << " Введите количество других участников: ";
+	std::cin >> botNumber;
+
+	jinx::get_bots(&botList, botNumber);	
+
+	for (int i = 0; i < botNumber; ++i)
+	{
+		std::uniform_int_distribution<> dis(1, 7);
+		seed = dis(gen);		
+
+		switch (seed)
+		{
+		case 1:
+		{
+			jinx::GV_Humpback bot_temp_vehicle_1(botList[i]);
+			bot_humpback_list.push_back(bot_temp_vehicle_1);
+			break;
+		} // end case 1
+		case 2:
+		{
+			jinx::GV_Humpback_Fast bot_temp_vehicle_2(botList[i]);
+			bot_humpback_fast_list.push_back(bot_temp_vehicle_2);
+			break;
+		} // end case 2
+		case 3:
+		{
+			jinx::GV_Centaur bot_temp_vehicle_3(botList[i]);
+			bot_centaur_list.push_back(bot_temp_vehicle_3);
+			break;
+		} // end case 3
+		case 4:
+		{
+			jinx::GV_AllTBoots bot_temp_vehicle_4(botList[i]);
+			bot_boots_list.push_back(bot_temp_vehicle_4);
+			break;
+		} // end case 4	
+		case 5:
+		{
+			jinx::AV_Magic_Carpet bot_temp_vehicle_5(botList[i]);
+			bot_carpet_list.push_back(bot_temp_vehicle_5);
+			break;
+		} // end case 4	
+		case 6:
+		{
+			jinx::AV_Eagle bot_temp_vehicle_6(botList[i]);
+			bot_eagle_list.push_back(bot_temp_vehicle_6);
+			break;
+		} // end case 4	
+		case 7:
+		{
+			jinx::AV_Broom bot_temp_vehicle_7(botList[i]);
+			bot_broom_list.push_back(bot_temp_vehicle_7);
+			break;
+		} // end case 4	
+		default:
+		{
+
+			// DEBUG -------------------------
+			// std::cout << "\nEntered default switch\n";
+			// END DEBUG ---------------------
+
+			break;
+		} // end default
+		} // end switch (seed)		
+
+	} // END for (int i = 0; i < playerNumber; ++i)
+
+	if (bot_humpback_list.size() > 0)
+	{
+		for (int i = 0; i < bot_humpback_list.size(); ++i)
+		{
+			vehicle_ptr = &bot_humpback_list[i];
+			raceList.push_back(vehicle_ptr);
+		}
+	}
+
+	if (bot_humpback_fast_list.size() > 0)
+	{
+		for (int i = 0; i < bot_humpback_fast_list.size(); ++i)
+		{
+			vehicle_ptr = &bot_humpback_fast_list[i];
+			raceList.push_back(vehicle_ptr);
+		}
+	}
+
+	if (bot_centaur_list.size() > 0)
+	{
+		for (int i = 0; i < bot_centaur_list.size(); ++i)
+		{
+			vehicle_ptr = &bot_centaur_list[i];
+			raceList.push_back(vehicle_ptr);
+		}
+	}
+
+	if (bot_boots_list.size() > 0)
+	{
+		for (int i = 0; i < bot_boots_list.size(); ++i)
+		{
+			vehicle_ptr = &bot_boots_list[i];
+			raceList.push_back(vehicle_ptr);
+		}
+	}
+
+	if (bot_carpet_list.size() > 0)
+	{
+		for (int i = 0; i < bot_carpet_list.size(); ++i)
+		{
+			vehicle_ptr = &bot_carpet_list[i];
+			raceList.push_back(vehicle_ptr);
+		}
+	}
+
+	if (bot_eagle_list.size() > 0)
+	{
+		for (int i = 0; i < bot_eagle_list.size(); ++i)
+		{
+			vehicle_ptr = &bot_eagle_list[i];
+			raceList.push_back(vehicle_ptr);
+		}
+	}
+
+	if (bot_broom_list.size() > 0)
+	{
+		for (int i = 0; i < bot_broom_list.size(); ++i)
+		{
+			vehicle_ptr = &bot_broom_list[i];
+			raceList.push_back(vehicle_ptr);
+		}
+	}
+
+	// RESET SCREEN -----------------
+
+	jinx::clear_screen();
+	jinx::print_menu_header(userName);
+
+	// -------------------------------
+
+	std::cout << "\n СПИСОК УЧАСТНИКОВ:\n\n";
+
+	if (raceList.size() != 0)
+	{
+		jinx::print_race_roster(raceList);
+	}
+	else
+	{
+		std::cout << " -- ПУСТО --";
+	}
+
+#ifdef _WIN32			// windows
+	system("pause");
+#else					// POSIX
+	std::cout << " Введите любую кнопку для продолжения...\n";
+	std::cin.get();
+#endif 
+
+	// RESET SCREEN -----------------
+
+	jinx::clear_screen();
+	jinx::print_menu_header(userName);
+
+	// -------------------------------
+
+	// ПРОЦЕСС ФОРМИРОВАНИЯ ГОНКИ -------------------------------
+
+	std::cout << " Введите дистанцию гонки: \n";
+	std::cout << userName << "> ";
+	std::cin >> raceDistance;
+
+	// RESET SCREEN -----------------
+
+	jinx::clear_screen();
+	jinx::print_menu_header(userName);
+
+	// -------------------------------
+
+	std::cout << " - Параметры гонки \n\n";
+	std::cout << " - Тип гонки: смешанная гонка\n";
+	std::cout << " - Дистанция гонки: " << raceDistance << '\n';
+	std::cout << " - Количество участников: " << raceList.size() << '\n';
+	std::cout << " - Ростер участников старта: \n\n";
+
+	if (raceList.size() != 0)
+	{
+		jinx::print_race_roster(raceList);
+	}
+	else
+	{
+		std::cout << "-- ПУСТО --";
+	}
+
+#ifdef _WIN32			// windows
+	system("pause");
+#else					// POSIX
+	std::cout << " Введите любую кнопку для продолжения...\n";
+	std::cin.get();
+#endif 
+
+	// Генерация результатов гонки
+
+	for (int i = 0; i < raceList.size(); ++i)
+	{
+		raceList[i]->calculate_time_result(raceDistance);
+	}
+
+	// Сортировка результатов гонки
+
+	// std::sort(raceList.begin(), raceList.end());
+
+	jinx::sort_result_roster(raceList);
+
+	// Вывод результатов гонки
+
+	// RESET SCREEN -----------------
+
+	jinx::clear_screen();
+	jinx::print_menu_header(userName);
+
+	// -------------------------------
+
+	std::cout << " - Параметры гонки \n\n";
+	std::cout << " - Тип гонки: смешанная гонка\n";
+	std::cout << " - Дистанция гонки: " << raceDistance << '\n';
+	std::cout << " - Количество участников: " << raceList.size() << '\n';
+	std::cout << " - Результаты участников старта: \n\n";
+
+	if (raceList.size() != 0)
+	{
+		jinx::print_race_results(raceList);
+	}
+	else
+	{
+		std::cout << "-- ПУСТО --";
+	}
+
+	// Завершение и выход
+
+#ifdef _WIN32			// windows
+	system("pause");
+#else					// POSIX
+	std::cout << " Введите любую кнопку для продолжения...\n";
+	std::cin.get();
+#endif 
 }
+
+
+// -------------------------------------------------------
 
 /*
 крутим игру
@@ -937,10 +1295,10 @@ void jinx::start_game(std::string userName)
 	jinx::clear_screen();
 	jinx::print_menu_header(userName);
 
-	std::cout << "Меню (выберите действие), выберите тип гонки:	\n"
-		<< "1. Наземная гонка\n"
-		<< "2. Воздушная гонка\n"
-		<< "3. Смешанная гонка\n";
+	std::cout << " Меню (выберите действие), выберите тип гонки:	\n"
+		<< " 1. Наземная гонка\n"
+		<< " 2. Воздушная гонка\n"
+		<< " 3. Смешанная гонка\n";
 
 	do // while (playerMenuInput == -1);
 	{
