@@ -36,6 +36,15 @@ namespace jinx
 	// -------------------------------------------------------
 	// ДОП ФУНКЦИИ
 
+	// Получение дистанции гонки
+	int get_race_distance(std::string);
+
+	// Получение количества ботов
+	int get_competitors_count(std::string);
+
+	// вывод информации о заезде и результатах
+	void print_roster(bool, int, int, int, std::vector<jinx::Vehicle*>&);
+
 	// Принтеры
 
 	/*

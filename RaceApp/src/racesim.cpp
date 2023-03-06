@@ -44,7 +44,7 @@ int main(int argc, char ** argv)
 	
 	// ПЕРЕМЕННЫЕ --------------------------------------------
 
-	std::string userName;					// ммя игрока
+	std::string userName;					// имя игрока
 	bool flagExit = false;					// флаг выхода
 	short playerMenuInput = -1;				// ввод игрока в меню игры	
 	short raceType = -1;					// Тип выбранной гонки
@@ -62,8 +62,7 @@ int main(int argc, char ** argv)
 
 	std::cout << " Введите имя игрока\n> ";
 
-	getline(std::cin, userName);	
-
+	getline(std::cin, userName);
 
 	// ------------------------------------------------------
 	// ------- MAIN GAMEPLAY LOOP ---------------------------
@@ -78,7 +77,6 @@ int main(int argc, char ** argv)
 		jinx::print_menu_header(userName);
 
 		// крутилка главного меню
-
 		jinx::draw_menu_selector(repeatKey, &playerMenuInput, userName);		
 
 		switch (playerMenuInput)
